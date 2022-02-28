@@ -239,6 +239,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="{{route('post.index')}}" class="nav-link">
+              {{-- <i class="fas fa-post"></i>  --}}
+              <i class="fas fa-clone"></i>
+              <p>
+               Posts
+                {{-- <span class="right badge badge-danger">new</span> --}}
+              </p>
+            </a>
+          </li>
+
 
 
           <li class="nav-item">
