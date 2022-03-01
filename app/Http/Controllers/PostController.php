@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Category;
@@ -30,8 +31,10 @@ class PostController extends Controller
      */
     public function create()
     {
+        // use tag for post
+        $tags = Tag::all();
         $categories = Category::all();
-        return view('admin.post.create',compact('categories'));
+        return view('admin.post.create',compact(['categories','tags']));
     }
 
     /**
@@ -42,6 +45,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
        $this->validate($request,[
             'title'=>'required|unique:posts,title',
             'image'=>'required|image',
@@ -50,6 +54,7 @@ class PostController extends Controller
         ]);
 
         $post = post::create([
+
             'title' => $request->title,
             'image'=>'image.jpg',
             'category_id'=>$request->category,
@@ -59,6 +64,9 @@ class PostController extends Controller
             'published_at' =>Carbon::now(),
 
         ]);
+
+        // post ta attach kore dilam j tag gula request e asbe
+        $post->tags()->attach($request->tags);
 
         if($request->has('image')){
 
@@ -93,8 +101,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        // tag gula show korbo edit option tai data pathalam
+        $tags = Tag::all();
         $categories = Category::all();
-         return view('admin.post.edit',compact(['post','categories']));
+         return view('admin.post.edit',compact(['post','categories','tags']));
     }
 
     /**
@@ -116,6 +126,9 @@ class PostController extends Controller
         $post->slug = Str::slug($request->title);
         $post->discription = $request->discription;
         $post->category_id = $request->category;
+
+        // sync mani hola jodi new data ase tahole ta update korbe na hoy bose thakbe
+        $post->tags()->sync($request->tags);
         
 
         if($request->hasFile('image')){
@@ -139,7 +152,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
          if($post){
-
             if(file_exists(public_path($post->image))){
                 unlink(public_path($post->image));
             }

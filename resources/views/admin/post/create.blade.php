@@ -61,7 +61,16 @@
                       <input type="file" name="image" id="image" class="form-control">
                     </div>
                     
-                  
+                  {{-- tag show all  tag gula show korlam tag --}}
+                  <div class="form-group">
+                      @foreach ($tags as $item)
+                        <div class="custom-control custom-checkbox">
+                          {{-- data pass multipol tai array use korlam --}}
+                          <input class="custom-control-input" name="tags[]" type="checkbox" id="tag{{$item->id}}" value="{{$item->id}}">
+                          <label for="tag{{$item->id}}" class="custom-control-label">{{$item->name}}</label>
+                        </div>
+                      @endforeach
+                    </div>
 
                     <div class="form-group">
                       <label for="exampleInputPassword1">post Description</label>

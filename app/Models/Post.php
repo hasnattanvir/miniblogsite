@@ -22,4 +22,10 @@ class Post extends Model
         return $this->belongsTo('App\Models\User');
     }
 
+    // relation korlam post modeler shate
+    // many to many relation korlam karon akta tag onak poste thakte pare
+    public function tags(){
+        return $this->belongsToMany('App\Models\Tag');
+    }
+
 }

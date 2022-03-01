@@ -59,6 +59,23 @@
                         </select>
                     </div>
 
+{{-- show tag all --}}
+                    <div class="form-group">
+                      @foreach ($tags as $item)
+                        <div class="custom-control custom-checkbox">
+                          {{-- data pass multipol tai array use korlam --}}
+                          <input class="custom-control-input" name="tags[]" type="checkbox" id="tag{{$item->id}}" value="{{$item->id}}" 
+                          @foreach ($post->tags as $t)
+                              @if($item->id == $t->id)
+                              Checked
+                              @endif
+                          @endforeach
+                          >
+                          <label for="tag{{$item->id}}" class="custom-control-label">{{$item->name}}</label>
+                        </div>
+                      @endforeach
+                    </div>
+
 
                     <div class="mb-3">
                       <label for="">Image</label>
