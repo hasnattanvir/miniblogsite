@@ -66,7 +66,7 @@
                     <div class="form-group">
                       <label for="exampleInputPassword1">post Description</label>
                       <textarea name="discription" id="description" cols="30" rows="4" class="form-control">
-                        {{old('title')}}
+                        {{-- {{old('title')}} --}}
                       </textarea>
                     </div>
                    

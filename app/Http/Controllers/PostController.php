@@ -106,34 +106,27 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //  $this->validate($request,[
-        //     // 'title'=>"required|unique:posts,title,$post->id",
-        //     // 'image'=>'required|image',
-        //     'discription'=>'required',
-        //     'category'=>'required'
-        // ]);
-
+        $this->validate($request,[
+            'title' =>"required|unique:posts,title,$post->id",
+            // 'description' =>'required',
+            'category' => 'required',
+        ]);
       
-            $post->title = $request->title;
-            $post->slug = Str::slug($request->title);
-            // $post->image='image.jpg';
-            $post->category_id=$request->category;
-            $post->discription=$request->discription;
-            // $post->user_id = auth()->user()->id;
-            // $post->published_at =Carbon::now();
-
+        $post->title = $request->title;
+        $post->slug = Str::slug($request->title);
+        $post->discription = $request->discription;
+        $post->category_id = $request->category;
+        
 
         if($request->hasFile('image')){
-
             $image = $request->image;
             $image_new_name = time().'.'.$image->getClientOriginalExtension();
             $image->move('storage/post/',$image_new_name);
-            $post->image='/storage/post/'.$image_new_name;
-            $post->save();
+            $post->image = '/storage/post/'.$image_new_name;
         }
+        $post->save();
 
         Session::flash('success','post update Successfully');
-
         return redirect()->back();
     }
 
@@ -146,6 +139,11 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
          if($post){
+
+            if(file_exists(public_path($post->image))){
+                unlink(public_path($post->image));
+            }
+             
             $post->delete();
             Session::flash('success','post delete Successfully');
         return redirect()->route('post.index');

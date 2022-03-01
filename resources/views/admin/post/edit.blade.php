@@ -43,7 +43,7 @@
                   <div class="card-body">
                     <div class="form-group">
                       <label >post Name</label>
-                      <input type="text" value="{{$post->title}}" name="name" class="form-control">
+                      <input type="text" value="{{$post->title}}" name="title" class="form-control">
                     </div>
 
 
