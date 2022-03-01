@@ -38,7 +38,7 @@
                       <th>Title</th>
                       <th>Slug</th>
                       <th>Image</th>
-                      <th>Discription</th>
+                      {{-- <th>Discription</th> --}}
                       <th>Category Id</th>
                       <th>User Id</th>
                       <th>All Tag</th>
@@ -59,7 +59,7 @@
                         </div>
                         {{$item->image}}
                       </td>
-                      <td>{{$item->discription}}</td>
+                      {{-- <td>{!! $item->discription !!}}</td> --}}
                       <td>
                         {{$item->category->name}}
                          id = {{$item->category_id}}
