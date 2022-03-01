@@ -41,6 +41,7 @@
                       <th>Discription</th>
                       <th>Category Id</th>
                       <th>User Id</th>
+                      <th>All Tag</th>
                       <th>Published Time</th>
                       <th style="width: 40px">Action</th>
                     </tr>
@@ -70,6 +71,14 @@
                         {{$item->user_id}}
 
                       </td>
+                      {{-- tag show --}}
+                      <td>
+                        {{-- tag array show --}}
+                        {{-- {{$item->tags}} --}}
+                        @foreach ($item ->tags as $tag)
+                            <span class="badge badge-primary">{{$tag->name}}</span>
+                        @endforeach
+                      </td>
                       <td>{{$item->published_at}}</td>
 
                       <td>
@@ -81,7 +90,7 @@
                           @csrf
                           <button type="submit" class="btn btn-md btn-danger"><i class="fas fa-trash"></i></button>
                         </form>
-                        {{-- <a href="{{route('post.show',[$item->id])}}" class="btn btn-success ml-2"><i class="fas fa-eye"></i></a> --}}
+                        <a href="{{route('post.show',[$item->id])}}" class="btn btn-success ml-2"><i class="fas fa-eye"></i></a>
 
                        </div>
                       </td>

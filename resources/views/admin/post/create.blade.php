@@ -62,7 +62,7 @@
                     </div>
                     
                   {{-- tag show all  tag gula show korlam tag --}}
-                  <div class="form-group">
+                    <div class="form-group">
                       @foreach ($tags as $item)
                         <div class="custom-control custom-checkbox">
                           {{-- data pass multipol tai array use korlam --}}
