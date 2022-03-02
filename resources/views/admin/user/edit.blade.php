@@ -45,6 +45,17 @@
                       <label >user Name</label>
                       <input type="text" value="{{$user->name}}" name="name" class="form-control">
                     </div>
+
+                    <div class="form-group">
+                      <label >user email</label>
+                      <input type="email" value="{{$user->email}}" name="email" class="form-control">
+                    </div>
+
+
+                    <div class="form-group">
+                      <label >user password</label>
+                      <input type="text" value="{{$user->password}}" name="password" class="form-control">
+                    </div>
                   
 
                     <div class="form-group">
