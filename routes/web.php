@@ -17,26 +17,33 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/', [App\Http\Controllers\FrontEndController::class, 'home'])->name('home');
+Route::get('/about', [App\Http\Controllers\FrontEndController::class, 'about'])->name('about');
+Route::get('/category', [App\Http\Controllers\FrontEndController::class, 'category'])->name('category');
+Route::get('/post/{slug}', [App\Http\Controllers\FrontEndController::class, 'post'])->name('website.post');
+Route::get('/contact', [App\Http\Controllers\FrontEndController::class, 'contact'])->name('contact');
 
-Route::get('/', function(){
- return view('website.home');
-})->name('website');
 
-Route::get('/about', function(){
- return view('website.about');
-});
 
-Route::get('/category', function(){
- return view('website.category');
-});
+// Route::get('/', function(){
+//  return view('website.home');
+// })->name('website');
 
-Route::get('/post', function(){
- return view('website.post');
-});
+// Route::get('/about', function(){
+//  return view('website.about');
+// });
 
-Route::get('/contact', function(){
- return view('website.contact');
-});
+// Route::get('/category', function(){
+//  return view('website.category');
+// });
+
+// Route::get('/post', function(){
+//  return view('website.post');
+// });
+
+// Route::get('/contact', function(){
+//  return view('website.contact');
+// });
 
 
 // admin panet routes

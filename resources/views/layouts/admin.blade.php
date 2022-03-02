@@ -250,6 +250,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
           </li>
+{{-- log out --}}
+          <li class="nav-item">
+            <a href="{{route('logout')}}" class="nav-link">
+              {{-- <i class="fas fa-post"></i>  --}}
+              <i class="fas fa-clone"></i>
+              <p>
+               Logout
+                {{-- <span class="right badge badge-danger">new</span> --}}
+              </p>
+            </a>
+          </li>
+{{-- go to front-end --}}
+          <li class="nav-item">
+            <a href="{{route('website')}}" class="nav-link btn btn-primary" target="_blank">
+              {{-- <i class="fas fa-post"></i>  --}}
+              {{-- <i class="fas fa-clone"></i> --}}
+              <p class="mb-0">
+              View Website
+              </p>
+            </a>
+          </li>
 
 
 
