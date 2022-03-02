@@ -7,7 +7,7 @@
             <div class="col-md-4">
                 @foreach ($firstpost as $item)
                 <a href="{{route('website.post',['slug' => $item->slug])}}" class="h-entry mb-30 v-height gradient"
-                    style="background-image: url('{{$item->image}}')">
+                    style="background-image: url('{{$item->image}}');" >
                     <div class="text">
                         <h2>{{$item->title}}</h2>
                         <span class="date">{{$item->created_at->format('M d, Y')}}</span>
@@ -21,7 +21,7 @@
             <div class="col-md-4">
                 @foreach ( $postsmid as $item)
                 <a href="{{route('website.post',['slug' => $item->slug])}}" class="h-entry img-5 h-100 gradient"
-                    style="background-image: url('{{$item->image}}')">
+                    style="background-image: url('{{$item->image}}');" >
 
                     <div class="text">
                         <div class="post-categories mb-3">
@@ -38,7 +38,7 @@
             <div class="col-md-4">
                 @foreach ($lastpost as $item)
                 <a href="{{route('website.post',['slug' => $item->slug])}}" class="h-entry mb-30 v-height gradient"
-                    style="background-image: url('{{$item->image}}')">
+                    style="background-image: url('{{$item->image}}'); ">
                     <div class="text">
                         <h2>{{$item->title}}</h2>
                         <span class="date">{{$item->created_at->format('M d, Y')}}</span>
@@ -65,7 +65,7 @@
             <div class="col-lg-4 mb-4">
                 <div class="entry2">
                     <a href="{{route('website.post',['slug' => $item->slug])}}"><img src="{{$item->image}}" alt="Image"
-                            class="img-fluid rounded"></a>
+                            class="img-fluid rounded" ></a>
                     <div class="excerpt">
                         {{-- ai babe use korle side spreed kom hobe --}}
                         {{-- <span class="post-category text-white bg-secondary mb-3">{{$item->Category->name}}</span>
@@ -82,12 +82,11 @@
                             <span>&nbsp;-&nbsp; {{$item->created_at->format('M d, Y')}}</span>
                         </div>
 
-                        <p>{!! Str::limit($item->discription,200) !!}</p>
+                        {{|| Str::limit($item->discription,200) ||}}
                         <p><a href="{{route('website.post',['slug' => $item->slug])}}">Read More</a></p>
                     </div>
                 </div>
             </div>
-
             @endforeach
 
         </div>
@@ -99,17 +98,6 @@
           $recentPosts->links('pagination::bootstrap-4')
           }}
 
-
-            {{-- <div class="col-md-12">
-            <div class="custom-pagination">
-              <span>1</span>
-              <a href="#">2</a>
-              <a href="#">3</a>
-              <a href="#">4</a>
-              <span>...</span>
-              <a href="#">15</a>
-            </div>
-          </div> --}}
         </div>
 
 
