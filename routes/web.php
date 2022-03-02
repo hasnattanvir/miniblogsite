@@ -59,6 +59,10 @@ Route::group(['prefix'=>'admin','middleware'=>['auth']],function(){
 
     // user route
     Route::resource('user','UserController');
+    Route::get('/profile',[UserController::class,'profile'])->name('user.profile');
+    Route::post('/profile',[UserController::class,'profile_update'])->name('user.profile.update');
+
+
 
 
 

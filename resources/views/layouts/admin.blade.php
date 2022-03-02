@@ -264,6 +264,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 {{-- log out --}}
           <li class="nav-item">
+            <label style="color: #fff;"> Your Account</label>
+            <a href="{{route('user.profile')}}" class="nav-link">
+              {{-- <i class="fas fa-post"></i>  --}}
+              <i class="far fa-user"></i>
+              <p>
+               Profile
+                {{-- <span class="right badge badge-danger">new</span> --}}
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{route('logout')}}" class="nav-link">
               {{-- <i class="fas fa-post"></i>  --}}
               <i class="fas fa-clone"></i>
