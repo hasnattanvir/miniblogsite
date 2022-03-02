@@ -17,11 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/', [App\Http\Controllers\FrontEndController::class, 'home'])->name('home');
-Route::get('/about', [App\Http\Controllers\FrontEndController::class, 'about'])->name('about');
-Route::get('/category', [App\Http\Controllers\FrontEndController::class, 'category'])->name('category');
+Route::get('/', [App\Http\Controllers\FrontEndController::class, 'home'])->name('website.home');
+Route::get('/about', [App\Http\Controllers\FrontEndController::class, 'about'])->name('website.about');
+Route::get('/category', [App\Http\Controllers\FrontEndController::class, 'category'])->name('website.category');
 Route::get('/post/{slug}', [App\Http\Controllers\FrontEndController::class, 'post'])->name('website.post');
-Route::get('/contact', [App\Http\Controllers\FrontEndController::class, 'contact'])->name('contact');
+Route::get('/contact', [App\Http\Controllers\FrontEndController::class, 'contact'])->name('website.contact');
 
 
 

@@ -73,7 +73,7 @@
                         <span class="post-category text-white bg-secondary mb-3">{{$item->Category->name}}</span>
 
 
-                        <h2><a href="single.html">{{$item->title}}</a></h2>
+                        <h2><a href="{{route('website.post',['slug' => $item->slug])}}">{{$item->title}}</a></h2>
                         <div class="post-meta align-items-center text-left clearfix">
                             <figure class="author-figure mb-0 mr-3 float-left"><img
                                     src="{{asset('website')}}/images/person_1.jpg" alt="Image" class="img-fluid">
@@ -90,17 +90,17 @@
 
             @endforeach
 
-</div>
+        </div>
 
-{{-- pagination --}}
-<div class="row text-center pt-5 border-top">
+        {{-- pagination --}}
+        <div class="row text-center pt-5 border-top">
 
-    {{ 
+            {{ 
           $recentPosts->links('pagination::bootstrap-4')
           }}
 
 
-    {{-- <div class="col-md-12">
+            {{-- <div class="col-md-12">
             <div class="custom-pagination">
               <span>1</span>
               <a href="#">2</a>
@@ -110,57 +110,65 @@
               <a href="#">15</a>
             </div>
           </div> --}}
-</div>
+        </div>
 
 
-</div>
+    </div>
 </div>
 
 <div class="site-section bg-light">
     <div class="container">
 
         <div class="row align-items-stretch retro-layout">
-
+            {{-- 'footerpostfirst','footerpostsmid','footerpostlast' --}}
             <div class="col-md-5 order-md-2">
-                <a href="single.html" class="hentry img-1 h-100 gradient"
-                    style="background-image: url('{{asset('website')}}/images/img_4.jpg');">
-                    <span class="post-category text-white bg-danger">Travel</span>
+                @foreach ($footerpostfirst as $item)
+                <a href="{{route('website.post',['slug' => $item->slug])}}" class="hentry img-1 h-100 gradient"
+                    style="background-image: url('{{$item->image}}');">
+                    <span class="post-category text-white bg-danger">{{$item->category->name}}</span>
                     <div class="text">
-                        <h2>The 20 Biggest Fintech Companies In America 2019</h2>
-                        <span>February 12, 2019</span>
+                        <h2>{{$item->title}}</h2>
+                        <span>{{$item->created_at->format('M d, Y')}}</span>
                     </div>
                 </a>
+                @endforeach
+
             </div>
 
-            <div class="col-md-7">
 
-                <a href="single.html" class="hentry img-2 v-height mb30 gradient"
-                    style="background-image: url('{{asset('website')}}/images/img_1.jpg');">
-                    <span class="post-category text-white bg-success">Nature</span>
+
+
+
+
+            <div class="col-md-7">
+                @foreach ($footerpostlast as $item)
+                <a href="{{route('website.post',['slug' => $item->slug])}}" class="hentry img-2 v-height mb30 gradient"
+                    style="background-image: url('{{$item->image}}');">
+                    <span class="post-category text-white bg-success">{{$item->category->name}}</span>
                     <div class="text text-sm">
-                        <h2>The 20 Biggest Fintech Companies In America 2019</h2>
-                        <span>February 12, 2019</span>
+                        <h2>{{$item->title}}</h2>
+                        <span>{{$item->created_at->format('M d, Y')}}</span>
                     </div>
                 </a>
+                @endforeach
 
-                <div class="two-col d-block d-md-flex">
-                    <a href="single.html" class="hentry v-height img-2 gradient"
-                        style="background-image: url('{{asset('website')}}/images/img_2.jpg');">
-                        <span class="post-category text-white bg-primary">Sports</span>
+
+
+                <div class="two-col d-block d-md-flex justify-content-between">
+                    @foreach ($footerpostsmid as $item)
+
+                    <a href="{{route('website.post',['slug' => $item->slug])}}" class="hentry v-height img-2 gradient"
+                        style="background-image: url('{{$item->image}}');">
+                        <span class="post-category text-white bg-primary">{{$item->category->name}}</span>
                         <div class="text text-sm">
-                            <h2>The 20 Biggest Fintech Companies In America 2019</h2>
-                            <span>February 12, 2019</span>
+                            <h2>{{$item->title}}</h2>
+                            <span>{{$item->created_at->format('M d, Y')}}</span>
                         </div>
                     </a>
-                    <a href="single.html" class="hentry v-height img-2 ml-auto gradient"
-                        style="background-image: url('{{asset('website')}}/images/img_3.jpg');">
-                        <span class="post-category text-white bg-warning">Lifestyle</span>
-                        <div class="text text-sm">
-                            <h2>The 20 Biggest Fintech Companies In America 2019</h2>
-                            <span>February 12, 2019</span>
-                        </div>
-                    </a>
+                    @endforeach
+
                 </div>
+
 
             </div>
         </div>
