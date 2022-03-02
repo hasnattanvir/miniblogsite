@@ -250,6 +250,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
           </li>
+          {{-- user menu --}}
+
+          <li class="nav-item">
+            <a href="{{route('user.index')}}" class="nav-link">
+              {{-- <i class="fas fa-post"></i>  --}}
+              <i class="fas fa-user"></i>
+              <p>
+               User
+                {{-- <span class="right badge badge-danger">new</span> --}}
+              </p>
+            </a>
+          </li>
 {{-- log out --}}
           <li class="nav-item">
             <a href="{{route('logout')}}" class="nav-link">

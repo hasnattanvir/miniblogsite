@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -55,6 +56,10 @@ Route::group(['prefix'=>'admin','middleware'=>['auth']],function(){
     Route::resource('category','CategoryController');
     Route::resource('tag','TagController');
     Route::resource('post','PostController');
+
+    // user route
+    Route::resource('user','UserController');
+
 
 
     // Route::resource('category', App\Http\Controllers\CategoryController::class);
