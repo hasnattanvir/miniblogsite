@@ -26,7 +26,6 @@ class FrontEndController extends Controller
 
         // return $postsmid;
 
-
         // ------------ footer  post -----------
         //inrandom use korbo 
         $footerposts = Post::with('Category','user')->inRandomOrder()->limit(4)->get();
@@ -35,11 +34,6 @@ class FrontEndController extends Controller
         $footerpostsmid =  $footerposts->splice(0,2);
         $footerpostlast =  $footerposts->splice(0,1);
         // return $footerpostlast;
-
-
-
-
-
 
 
         $recentPosts = Post::with('Category','user')->orderBy('created_at','DESC')->paginate(4);
@@ -52,22 +46,36 @@ class FrontEndController extends Controller
         return view('website.about');
     }
 
-    public function category(){
-        
-        return view('website.category');
+    public function category($slug){
+        // ai route ta catagory page er jonno 
+        $category = category::where('slug',$slug)->first();
+        // jodi category find kore pai tahole view korbe
+        if($category){
+            // categoy je post gula ace ta search kore send korlam front-end 
+            $posts = Post::where('category_id',$category->id)->paginate(9);
+            return view('website.category',compact(['category','posts']));
+        }else{
+            return redirect()->route('website');
+        }
     }
 
     public function contact(){
-        
         return view('website.contact');
     }
 
+// data post or single page send korlam
+
     public function post($slug){
         $post = Post::with('Category','user')->where('slug',$slug)->first();
+        // aita popular post use korbo random kore single poste send korlam
+        $posts = Post::with('Category','user')->inRandomOrder()->limit(3)->get();
+        // categories er jonno use korbo j poste bobohar
+        $categories = Category::all();
+        $tags= Tag::all();
+
         // dd($post);
         if($post){
-           
-            return view('website.post',compact('post'));
+            return view('website.post',compact(['post','posts','categories','tags']));
         }
 
         return redirect('/');

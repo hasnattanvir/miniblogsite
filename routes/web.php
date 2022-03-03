@@ -20,7 +20,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/', [App\Http\Controllers\FrontEndController::class, 'home'])->name('website.home');
 Route::get('/about', [App\Http\Controllers\FrontEndController::class, 'about'])->name('website.about');
-Route::get('/category', [App\Http\Controllers\FrontEndController::class, 'category'])->name('website.category');
+Route::get('/category{slug}', [App\Http\Controllers\FrontEndController::class, 'category'])->name('website.category');
 Route::get('/post/{slug}', [App\Http\Controllers\FrontEndController::class, 'post'])->name('website.post');
 Route::get('/contact', [App\Http\Controllers\FrontEndController::class, 'contact'])->name('website.contact');
 
@@ -61,10 +61,6 @@ Route::group(['prefix'=>'admin','middleware'=>['auth']],function(){
     Route::resource('user','UserController');
     Route::get('/profile',[UserController::class,'profile'])->name('user.profile');
     Route::post('/profile',[UserController::class,'profile_update'])->name('user.profile.update');
-
-
-
-
 
     // Route::resource('category', App\Http\Controllers\CategoryController::class);
     // Route::get('/catcontroller', [CategoryController::class,'index'])->name('category.index');
