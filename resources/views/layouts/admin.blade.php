@@ -284,7 +284,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
           </li>
-{{-- go to front-end --}}
+          {{-- setting menu --}}
+          <li class="nav-item">
+            <a href="{{route('settings.index')}}" class="nav-link">
+              {{-- <i class="fas fa-post"></i>  --}}
+              <i class="fas fa-cog"></i> 
+              <p>
+               Setting
+                {{-- <span class="right badge badge-danger">new</span> --}}
+              </p>
+            </a>
+          </li>
+            {{-- go to front-end --}}
           <li class="nav-item">
             <a href="{{route('website.home')}}" class="nav-link btn btn-primary" target="_blank">
               {{-- <i class="fas fa-post"></i>  --}}

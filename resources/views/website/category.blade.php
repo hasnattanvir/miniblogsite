@@ -32,7 +32,8 @@
                         <div class="post-meta align-items-center text-left clearfix">
                             <figure class="author-figure mb-0 mr-3 float-left">
                               {{-- jodi post admin image na pai tahole onno image show korbe --}}
-                                <img src="{{asset($item->user->image)}}" alt="Image" class="img-fluid">
+                              {{-- @if($item->user->image){{asset($item->user->image)}} @else {{asset('website/images/profile.png')}}@endif --}}
+                                <img src="@if($item->user->image){{asset($item->user->image)}} @else {{asset('website/images/profile.png')}}@endif" alt="Image" class="img-fluid">
                             </figure>
                             <span class="d-inline-block mt-1">By <a href="#">{{$item->user->name}}</a></span>
                             <span>&nbsp;-&nbsp; {{$item->created_at->format('M d, Y')}}</span>
@@ -49,12 +50,9 @@
         <div class="row text-center pt-5 border-top">
           <div class="col-md-12">
             <div class="custom-pagination">
-              <span>1</span>
-              <a href="#">2</a>
-              <a href="#">3</a>
-              <a href="#">4</a>
-              <span>...</span>
-              <a href="#">15</a>
+               {{ 
+          $posts->links('pagination::bootstrap-4')
+          }}
             </div>
           </div>
       </div>

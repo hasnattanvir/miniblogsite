@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SettingsController;
 
 
 /*
@@ -20,7 +21,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/', [App\Http\Controllers\FrontEndController::class, 'home'])->name('website.home');
 Route::get('/about', [App\Http\Controllers\FrontEndController::class, 'about'])->name('website.about');
-Route::get('/category{slug}', [App\Http\Controllers\FrontEndController::class, 'category'])->name('website.category');
+Route::get('/category/{slug}', [App\Http\Controllers\FrontEndController::class, 'category'])->name('website.category');
 Route::get('/post/{slug}', [App\Http\Controllers\FrontEndController::class, 'post'])->name('website.post');
 Route::get('/contact', [App\Http\Controllers\FrontEndController::class, 'contact'])->name('website.contact');
 
@@ -45,8 +46,6 @@ Route::get('/contact', [App\Http\Controllers\FrontEndController::class, 'contact
 // Route::get('/contact', function(){
 //  return view('website.contact');
 // });
-
-
 // admin panet routes
 
 Route::group(['prefix'=>'admin','middleware'=>['auth']],function(){
@@ -61,6 +60,10 @@ Route::group(['prefix'=>'admin','middleware'=>['auth']],function(){
     Route::resource('user','UserController');
     Route::get('/profile',[UserController::class,'profile'])->name('user.profile');
     Route::post('/profile',[UserController::class,'profile_update'])->name('user.profile.update');
+    // setting
+    Route::get('settings',[SettingsController::class,'edit'])->name('settings.index');
+    Route::post('settings',[SettingsController::class,'update'])->name('settings.update');
+
 
     // Route::resource('category', App\Http\Controllers\CategoryController::class);
     // Route::get('/catcontroller', [CategoryController::class,'index'])->name('category.index');

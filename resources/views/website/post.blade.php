@@ -12,7 +12,8 @@
                      <span class="post-category text-white bg-success mb-3">{{$post->category->name}}</span>
                      <h1 class="mb-4"><a href="javascript:void()">{{$post->title}}</a></h1>
                      <div class="post-meta align-items-center text-center">
-                         <figure class="author-figure mb-0 mr-3 d-inline-block"><img src="{{$post->user->image}}"></figure>
+                         <figure class="author-figure mb-0 mr-3 d-inline-block"><img src="{{$post->user->image}}">
+                         </figure>
                          <span class="d-inline-block mt-1">{{$post->user->name}}</span>
                          <span>&nbsp;-&nbsp; {{$post->created_at->format('M d, Y')}}</span>
                      </div>
@@ -22,7 +23,7 @@
      </div>
  </div>
 
-{{-- banner section end --}}
+ {{-- banner section end --}}
 
  <section class="site-section py-lg">
      <div class="container">
@@ -37,20 +38,20 @@
 
 
 
-{{-- tag and categories --}}
+                 {{-- tag and categories --}}
                  <div class="pt-5">
-                     <p>Categories: 
-                        <a href="#">{{$post->category->name}}</a>
-                        
+                     <p>Categories:
+                         <a href="#">{{$post->category->name}}</a>
 
-                      @if($post->tags()->count() > 0)
-                        Tags: 
-                        @foreach ($post->tags as $item)
-                            <a href="#">{{$item->name}}</a>, 
-                        @endforeach
-                      @endif
-                        
-                      </p>
+
+                         @if($post->tags()->count() > 0)
+                         Tags:
+                         @foreach ($post->tags as $item)
+                         <a href="#">{{$item->name}}</a>,
+                         @endforeach
+                         @endif
+
+                     </p>
                  </div>
 
 
@@ -201,8 +202,7 @@
                  <!-- END sidebar-box -->
                  <div class="sidebar-box">
                      <div class="bio text-center">
-                         <img src="{{asset($post->user->image)}}" alt="Image Placeholder"
-                             class="img-fluid mb-5">
+                         <img src="{{asset($post->user->image)}}" alt="Image Placeholder" class="img-fluid mb-5">
                          <div class="bio-body">
                              <h2>{{$post->user->name}}</h2>
                              <p class="mb-4">{{$post->user->description}}</p>
@@ -222,11 +222,10 @@
                      <div class="post-entry-sidebar">
                          <ul>
 
-                            @foreach ($posts as $item)
-                            <li>
+                             @foreach ($posts as $item)
+                             <li>
                                  <a href="">
-                                     <img src="{{asset($item->image)}}" alt="Image placeholder"
-                                         class="mr-4">
+                                     <img src="{{asset($item->image)}}" alt="Image placeholder" class="mr-4">
                                      <div class="text">
                                          <h4>{{$item->title}}</h4>
                                          <div class="post-meta">
@@ -235,9 +234,9 @@
                                      </div>
                                  </a>
                              </li>
-                            @endforeach
-                            
-                           
+                             @endforeach
+
+
 
                          </ul>
                      </div>
@@ -248,7 +247,7 @@
                      <h3 class="heading">Categories</h3>
                      <ul class="categories">
                          @foreach ($categories as $item)
-                            <li><a href="#">{{$item->name}} <span>(12)</span></a></li>
+                         <li><a href="#">{{$item->name}} <span>(12)</span></a></li>
                          @endforeach
                      </ul>
                  </div>
@@ -258,7 +257,7 @@
                      <h3 class="heading">Tags</h3>
                      <ul class="tags">
                          @foreach ($tags as $item)
-                            <li><a href="#">{{$item->name}}</a></li>
+                         <li><a href="#">{{$item->name}}</a></li>
                          @endforeach
                      </ul>
                  </div>
@@ -281,44 +280,43 @@
          <div class="row align-items-stretch retro-layout">
 
              <div class="col-md-5 order-md-2">
-                 <a href="single.html" class="hentry img-1 h-100 gradient"
-                     style="background-image: url('{{asset('website')}}/images/img_4.jpg');">
-                     <span class="post-category text-white bg-danger">Travel</span>
+                 @foreach ($relatedpostfirst as $item)
+                 <a href="{{route('website.post',['slug' => $item->slug])}}" class="hentry img-1 h-100 gradient"
+                     style="background-image: url('{{$item->image}}')">
+                     <span class="post-category text-white bg-danger">{{$item->category->name}}</span>
                      <div class="text">
-                         <h2>The 20 Biggest Fintech Companies In America 2019</h2>
-                         <span>February 12, 2019</span>
+                         <h2>{{$item->title}}</h2>
+                         <span>{{$item->created_at->format('M d,Y')}}</span>
                      </div>
                  </a>
+                 @endforeach
              </div>
 
              <div class="col-md-7">
-
-                 <a href="single.html" class="hentry img-2 v-height mb30 gradient"
-                     style="background-image: url('{{asset('website')}}/images/img_1.jpg');">
-                     <span class="post-category text-white bg-success">Nature</span>
+                 @foreach ($relatedpostlast as $item)
+                 <a href="{{route('website.post',['slug' => $item->slug])}}" class="hentry img-2 v-height mb30 gradient"
+                     style="background-image: url('{{$item->image}}');">
+                     <span class="post-category text-white bg-success">{{$item->category->name}}</span>
                      <div class="text text-sm">
-                         <h2>The 20 Biggest Fintech Companies In America 2019</h2>
-                         <span>February 12, 2019</span>
+                         <h2>{{$item->title}}</h2>
+                         <span>{{$item->created_at->format('M d,Y')}}</span>
                      </div>
                  </a>
+                 @endforeach
 
-                 <div class="two-col d-block d-md-flex">
-                     <a href="single.html" class="hentry v-height img-2 gradient"
-                         style="background-image: url('{{asset('website')}}/images/img_2.jpg');">
-                         <span class="post-category text-white bg-primary">Sports</span>
+
+                 <div class="two-col d-block justify-content-between d-md-flex">
+                     @foreach ($relatedpostmid as $item)
+                     <a href="{{route('website.post',['slug' => $item->slug])}}" class="hentry v-height img-2 gradient"
+                         style="background-image: url('{{$item->image}}');">
+                         <span class="post-category text-white bg-primary">{{$item->category->name}}</span>
                          <div class="text text-sm">
-                             <h2>The 20 Biggest Fintech Companies In America 2019</h2>
-                             <span>February 12, 2019</span>
+                             <h2>{{$item->title}}</h2>
+                             <span>{{$item->created_at->format('M d,Y')}}</span>
                          </div>
                      </a>
-                     <a href="single.html" class="hentry v-height img-2 ml-auto gradient"
-                         style="background-image: url('{{asset('website')}}/images/img_3.jpg');">
-                         <span class="post-category text-white bg-warning">Lifestyle</span>
-                         <div class="text text-sm">
-                             <h2>The 20 Biggest Fintech Companies In America 2019</h2>
-                             <span>February 12, 2019</span>
-                         </div>
-                     </a>
+                      @endforeach
+                     
                  </div>
 
              </div>

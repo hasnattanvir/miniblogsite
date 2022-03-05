@@ -76,9 +76,10 @@
                         <h2><a href="{{route('website.post',['slug' => $item->slug])}}">{{$item->title}}</a></h2>
                         <div class="post-meta align-items-center text-left clearfix">
                             <figure class="author-figure mb-0 mr-3 float-left">
-                                <img src="{{asset($item->user->image)}}" alt="Image" class="img-fluid">
+                                <img src="@if($item->user->image){{asset($item->user->image)}} @else {{asset('website/images/profile.png')}}@endif" alt="Image" class="img-fluid">
+                               {{-- php var_dump($item); --}}
                             </figure>
-                            <span class="d-inline-block mt-1">By <a href="#">{{$item->user->name}}</a></span>
+                            <span class="d-inline-block mt-1">By <a href="#">{{ $item->user->name }}</a></span>
                             <span>&nbsp;-&nbsp; {{$item->created_at->format('M d, Y')}}</span>
                         </div>
                         {{ Str::limit($item->discription,200) }}

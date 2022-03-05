@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 use App\Models\Category;
+use App\Models\Settings;
+
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\view;
@@ -27,5 +29,8 @@ class AppServiceProvider extends ServiceProvider
     {
         $categories = category::take(5)->get();
         View::share('categories',$categories);
+
+        $settings = Settings::first();
+        View::Share('settings',$settings);
     }
 }
