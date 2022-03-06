@@ -107,6 +107,20 @@
                                                 class="form-control">
                                         </div>
                                     </div>
+                                    <div class="col-4">
+                                        <div class="form-group">
+                                            <label>Contact Phone</label>
+                                            <input type="text" value="{{$setting->phone}}" name="phone"
+                                                class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-group">
+                                            <label>Contact Location</label>
+                                            <input type="text" value="{{$setting->address}}" name="address"
+                                                class="form-control">
+                                        </div>
+                                    </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Copyright</label>

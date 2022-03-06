@@ -35,6 +35,7 @@ class SettingsController extends Controller
         $this->validate($request,[
             'name' => 'required',
             'copyright' => 'required',
+            'phone' =>'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
         ]);
 
         $setting = Settings::first();
@@ -48,6 +49,10 @@ class SettingsController extends Controller
         $setting ->reddit = $request->reddit;
         $setting ->email = $request->email;
         $setting ->copyright = $request->copyright;
+        $setting ->phone = $request->phone;
+        $setting ->address = $request->address;
+
+
 
 
         $setting->save();
@@ -61,7 +66,7 @@ class SettingsController extends Controller
         }
         // dd($request->all());
 
-        // this method is fucking method dont use is
+        // this method is dog method dont use is
         //  $setting->update($request->all());
 
 
