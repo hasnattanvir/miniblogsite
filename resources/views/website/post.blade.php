@@ -47,7 +47,7 @@
                          @if($post->tags()->count() > 0)
                          Tags:
                          @foreach ($post->tags as $item)
-                         <a href="#">{{$item->name}}</a>,
+                         <a href="{{route('website.tag',['slug'=>$item->slug])}}">{{$item->name}}</a>,
                          @endforeach
                          @endif
 
@@ -101,7 +101,6 @@
                                              nihil?</p>
                                          <p><a href="#" class="reply rounded">Reply</a></p>
                                      </div>
-
 
                                      <ul class="children">
                                          <li class="comment">
@@ -257,7 +256,7 @@
                      <h3 class="heading">Tags</h3>
                      <ul class="tags">
                          @foreach ($tags as $item)
-                         <li><a href="#">{{$item->name}}</a></li>
+                         <li><a href="{{route('website.tag',['slug'=>$item->slug])}}">{{$item->name}}</a></li>
                          @endforeach
                      </ul>
                  </div>

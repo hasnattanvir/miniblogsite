@@ -8,6 +8,10 @@ use App\Models\Post;
 use App\Models\Tag;
 use App\Models\Home;
 use App\Models\User;
+use App\Models\Contact;
+use Session;
+
+
 
 
 
@@ -62,7 +66,31 @@ class FrontEndController extends Controller
         }
     }
 
+
+
+    public function tag($slug){
+        // ai route ta catagory page er jonno 
+        $tag = Tag::where('slug',$slug)->first();
+        // return $tag->posts;
+        // jodi tag find kore pai tahole view korbe
+        if($tag){
+            // categoy je post gula ace ta search kore send korlam front-end 
+            $posts = $tag->posts()->orderBy('created_at','desc')->paginate(9);
+            // return $posts;
+            return view('website.tag',compact('tag','posts'));
+        }else{
+            return redirect()->route('website');
+        }
+    }
+
+
+
+
+
+
     public function contact(){
+
+
         return view('website.contact');
     }
 
@@ -95,5 +123,21 @@ class FrontEndController extends Controller
         }
 
         return redirect('/');
+    }
+
+
+    public function send_message(Request $request){
+        // dd($request->all());
+        $this->validate($request,[
+            'name' => 'required|max:100',
+            'email' => 'required|email|max:200',
+            'subject'=>'required|max:255',
+            'message' => 'required|min:100',
+
+
+        ]);
+            $contact = Contact::create($request->all());
+        Session::flash('success','contact Update Successfully');
+        return redirect()->back();
     }
 }

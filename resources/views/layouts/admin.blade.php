@@ -250,6 +250,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
           </li>
+          {{-- massage --}}
+          <li class="nav-item">
+            <a href="{{route('contact.index')}}" class="nav-link">
+              {{-- <i class="fas fa-post"></i>  --}}
+              <i class="fas fa-envelope"></i> 
+              <p>
+               Message
+                {{-- <span class="right badge badge-danger">new</span> --}}
+              </p>
+            </a>
+          </li>
           {{-- user menu --}}
 
           <li class="nav-item">
@@ -284,6 +295,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
           </li>
+
+
+
           {{-- setting menu --}}
           <li class="nav-item">
             <a href="{{route('settings.index')}}" class="nav-link">

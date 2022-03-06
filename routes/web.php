@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\ContactController;
 
 
 /*
@@ -22,10 +23,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/', [App\Http\Controllers\FrontEndController::class, 'home'])->name('website.home');
 Route::get('/about', [App\Http\Controllers\FrontEndController::class, 'about'])->name('website.about');
 Route::get('/category/{slug}', [App\Http\Controllers\FrontEndController::class, 'category'])->name('website.category');
+Route::get('/tag/{slug}', [App\Http\Controllers\FrontEndController::class, 'tag'])->name('website.tag');
 Route::get('/post/{slug}', [App\Http\Controllers\FrontEndController::class, 'post'])->name('website.post');
 Route::get('/contact', [App\Http\Controllers\FrontEndController::class, 'contact'])->name('website.contact');
 
 
+
+Route::post('/contact',[App\Http\Controllers\FrontEndController::class,'send_message'])->name('website.contact');
 
 // Route::get('/', function(){
 //  return view('website.home');
@@ -63,6 +67,11 @@ Route::group(['prefix'=>'admin','middleware'=>['auth']],function(){
     // setting
     Route::get('settings',[SettingsController::class,'edit'])->name('settings.index');
     Route::post('settings',[SettingsController::class,'update'])->name('settings.update');
+    
+    //contact
+    Route::get('/contact',[ContactController::class,'index'])->name('contact.index');
+    Route::get('/contact/show/{id}',[ContactController::class,'show'])->name('contact.show');
+    Route::delete('/contact/delete/{id}',[ContactController::class,'destroy'])->name('contact.destroy');
 
 
     // Route::resource('category', App\Http\Controllers\CategoryController::class);
