@@ -125,7 +125,7 @@
   <script src="{{asset('website')}}/js/jquery.magnific-popup.min.js"></script>
   <script src="{{asset('website')}}/js/bootstrap-datepicker.min.js"></script>
   <script src="{{asset('website')}}/js/aos.js"></script>
-
+  @yield('script')
   <script src="{{asset('website')}}/js/main.js"></script>
 
 
