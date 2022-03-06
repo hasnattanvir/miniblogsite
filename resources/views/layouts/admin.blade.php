@@ -29,7 +29,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{route('dashboard')}}" class="brand-link">
-      <img src="{{asset("admin")}}/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{$settings->site_logo}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Mini Blog</span>
     </a>
 
@@ -63,7 +63,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="{{route('dashboard')}}" class="nav-link active">
+            <a href="{{route('dashboard')}}" class="nav-link {{ (request()->is('admin/dashboard')) ? 'active':'' }}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -87,7 +87,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
           {{-- catagory --}}
           <li class="nav-item">
-            <a href="{{route('category.index')}}" class="nav-link">
+            <a href="{{route('category.index')}}" class="nav-link {{ (request()->is('admin/category*')) ? 'active':'' }}">
               <i class="fas fa-tags"></i> 
               <p>
                Category
@@ -97,7 +97,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item">
-            <a href="{{route('tag.index')}}" class="nav-link">
+            <a href="{{route('tag.index')}}" class="nav-link {{ (request()->is('admin/tag*')) ? 'active':'' }}">
               <i class="fas fa-tag"></i> 
               <p>
                Tags
@@ -107,7 +107,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item">
-            <a href="{{route('post.index')}}" class="nav-link">
+            <a href="{{route('post.index')}}" class="nav-link {{ (request()->is('admin/post*')) ? 'active':'' }}">
               {{-- <i class="fas fa-post"></i>  --}}
               <i class="fas fa-clone"></i>
               <p>
@@ -118,7 +118,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
           {{-- massage --}}
           <li class="nav-item">
-            <a href="{{route('contact.index')}}" class="nav-link">
+            <a href="{{route('contact.index')}}" class="nav-link {{ (request()->is('admin/contact*')) ? 'active':'' }}">
               {{-- <i class="fas fa-post"></i>  --}}
               <i class="fas fa-envelope"></i> 
               <p>
@@ -130,7 +130,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           {{-- user menu --}}
 
           <li class="nav-item">
-            <a href="{{route('user.index')}}" class="nav-link">
+            <a href="{{route('user.index')}}" class="nav-link {{ (request()->is('admin/user*')) ? 'active':'' }}">
               {{-- <i class="fas fa-post"></i>  --}}
               <i class="fas fa-user"></i>
               <p>
@@ -142,7 +142,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 {{-- log out --}}
           <li class="nav-item">
             <label style="color: #fff;"> Your Account</label>
-            <a href="{{route('user.profile')}}" class="nav-link">
+            <a href="{{route('user.profile')}}" class="nav-link {{ (request()->is('admin/profile*')) ? 'active':'' }}">
               {{-- <i class="fas fa-post"></i>  --}}
               <i class="far fa-user"></i>
               <p>
@@ -152,7 +152,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('logout')}}" class="nav-link">
+            <a href="{{route('logout')}}" class="nav-link ">
               {{-- <i class="fas fa-post"></i>  --}}
               <i class="fas fa-clone"></i>
               <p>
@@ -166,7 +166,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           {{-- setting menu --}}
           <li class="nav-item">
-            <a href="{{route('settings.index')}}" class="nav-link">
+            <a href="{{route('settings.index')}}" class="nav-link {{ (request()->is('admin/settings*')) ? 'active':'' }}">
               {{-- <i class="fas fa-post"></i>  --}}
               <i class="fas fa-cog"></i> 
               <p>
@@ -176,8 +176,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
             {{-- go to front-end --}}
-          <li class="nav-item">
-            <a href="{{route('website.home')}}" class="nav-link btn btn-primary" target="_blank">
+            
+          <li class="nav-item mt-5 pt-5">
+            <a href="{{route('website.home')}}" class="nav-link btn btn-success" target="_blank">
               {{-- <i class="fas fa-post"></i>  --}}
               {{-- <i class="fas fa-clone"></i> --}}
               <p class="mb-0">
@@ -186,17 +187,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
 
-
-
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
