@@ -45,7 +45,8 @@ class FrontEndController extends Controller
     }
 
     public function about(){
-        return view('website.about');
+        $user = User::first();
+        return view('website.about',compact('user'));
     }
 
     public function category($slug){
