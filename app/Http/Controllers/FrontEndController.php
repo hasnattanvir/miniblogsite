@@ -109,10 +109,6 @@ class FrontEndController extends Controller
         $relatedpostlast =  $relatedpost->splice(0,1);
 
 
-
-
-
-
         // categories er jonno use korbo j poste bobohar
         $categories = Category::all();
         $tags= Tag::all();
@@ -140,4 +136,20 @@ class FrontEndController extends Controller
         Session::flash('success','contact Update Successfully');
         return redirect()->back();
     }
+
+    public function search(Request $request){
+        // Get the search value from the request
+    $search = $request->input('search');
+
+    // Search in the title and body columns from the posts table
+    $posts = Post::query()
+        ->where('title', 'LIKE', "%{$search}%")
+        ->orWhere('discription', 'LIKE', "%{$search}%")
+        ->get();
+    
+
+    // Return the search view with the resluts compacted
+    return view('website.searchresult', compact('posts'));
+    }
+
 }

@@ -21,16 +21,14 @@ use App\Http\Controllers\DashboardController;
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/', [App\Http\Controllers\FrontEndController::class, 'home'])->name('website.home');
+Route::get('/', [App\Http\Controllers\FrontEndController::class, 'home'])->name('website');
 Route::get('/about', [App\Http\Controllers\FrontEndController::class, 'about'])->name('website.about');
 Route::get('/category/{slug}', [App\Http\Controllers\FrontEndController::class, 'category'])->name('website.category');
 Route::get('/tag/{slug}', [App\Http\Controllers\FrontEndController::class, 'tag'])->name('website.tag');
 Route::get('/post/{slug}', [App\Http\Controllers\FrontEndController::class, 'post'])->name('website.post');
 Route::get('/contact', [App\Http\Controllers\FrontEndController::class, 'contact'])->name('website.contact');
-
-
-
 Route::post('/contact',[App\Http\Controllers\FrontEndController::class,'send_message'])->name('website.contact');
+Route::get('/search/', [App\Http\Controllers\FrontEndController::class,'search'])->name('search');
 
 // Route::get('/', function(){
 //  return view('website.home');
@@ -58,12 +56,9 @@ Route::group(['prefix'=>'admin','middleware'=>['auth']],function(){
     // Route::get('/dashboard',function(){
     //     return view('admin.dashboard.index');
     // })->name('dashboard');
-
-
     Route::resource('category','CategoryController');
     Route::resource('tag','TagController');
     Route::resource('post','PostController');
-
     // user route
     Route::resource('user','UserController');
     Route::get('/profile',[UserController::class,'profile'])->name('user.profile');

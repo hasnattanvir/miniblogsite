@@ -151,18 +151,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{route('logout')}}" class="nav-link ">
-              {{-- <i class="fas fa-post"></i>  --}}
-              <i class="fas fa-clone"></i>
-              <p>
-               Logout
-                {{-- <span class="right badge badge-danger">new</span> --}}
-              </p>
-            </a>
-          </li>
-
-
+          
 
           {{-- setting menu --}}
           <li class="nav-item">
@@ -175,10 +164,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
           </li>
+
             {{-- go to front-end --}}
+          <li class="nav-item">
+            <a href="{{route('logout')}}" class="nav-link ">
+              {{-- <i class="fas fa-post"></i>  --}}
+              <i class="fas fa-clone"></i>
+              <p>
+               Logout
+                {{-- <span class="right badge badge-danger">new</span> --}}
+              </p>
+            </a>
+          </li>
             
           <li class="nav-item mt-5 pt-5">
-            <a href="{{route('website.home')}}" class="nav-link btn btn-success" target="_blank">
+            <a href="{{route('website')}}" class="nav-link btn btn-success" target="_blank">
               {{-- <i class="fas fa-post"></i>  --}}
               {{-- <i class="fas fa-clone"></i> --}}
               <p class="mb-0">
@@ -214,10 +214,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-      Anything you want
+      Dev: Abul Hasmat Tanvir
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2021-2022 <a href="https://dusrasoft.com/">Dusrasoft Ltd</a>.</strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->

@@ -36,15 +36,17 @@
       <div class="container-fluid">
         <div class="row align-items-center">
           
-          <div class="col-12 search-form-wrap js-search-form">
-            <form method="get" action="#">
-              <input type="text" id="s" class="form-control" placeholder="Search...">
+          <div class="col-12 search-form-wrap js-search-form mt-5 pt-5">
+            <form  action="{{ route('search') }}" method="GET">
+              <input type="search" name="search" id="s" class="form-control" placeholder="Search...">
               <button class="search-btn" type="submit"><span class="icon-search"></span></button>
             </form>
           </div>
 
           <div class="col-4 site-logo">
-            <a href="index.html" class="text-black h2 mb-0">Mini Blog</a>
+            <a href="{{route('website')}}" class="text-black h2 mb-0">
+            <img src="{{$settings->site_logo}}" alt="photos" width="150px">
+            </a>
           </div>
 
           <div class="col-8 text-right">
@@ -76,7 +78,7 @@
           <div class="col-md-4 ml-auto">
             <!-- <h3 class="footer-heading mb-4">Navigation</h3> -->
             <ul class="list-unstyled float-left mr-5">
-              <li><a href="{{route('home')}}">Home</a></li>
+              <li><a href="{{route('website')}}">Home</a></li>
               <li><a href="{{route('website.about')}}">About</a></li>
               <li><a href="{{route('website.contact')}}">Contact</a></li>
               {{-- <li><a href="#">{{route('website')}}</a></li> --}}

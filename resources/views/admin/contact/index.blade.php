@@ -6,12 +6,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Starter Page</h1>
+            <h1 class="m-0">Message Page</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{route('website.home')}}">Home</a></li>
-              <li class="breadcrumb-item active">post List</li>
+              <li class="breadcrumb-item"><a href="{{route('website')}}">Home</a></li>
+              <li class="breadcrumb-item active">Message List</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -25,8 +25,7 @@
             <div class="card ">
               <div class="card-header  ">
                 <div class="d-flex justify-content-between align-items-center">
-                  <h3 class="card-title">post List</h3>
-                  <a href="{{route('post.create')}}" class="btn btn-primary">Create post</a>
+                  <h3 class="card-title">Message List</h3>
                 </div>
               </div>
               <!-- /.card-header -->

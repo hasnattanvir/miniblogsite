@@ -82,7 +82,7 @@
                             <span class="d-inline-block mt-1">By <a href="#">{{ $item->user->name }}</a></span>
                             <span>&nbsp;-&nbsp; {{$item->created_at->format('M d, Y')}}</span>
                         </div>
-                        {{ Str::limit($item->discription,200) }}
+                        {!! Str::limit($item->discription,400) !!}
                         <p><a href="{{route('website.post',['slug' => $item->slug])}}">Read More</a></p>
                     </div>
                 </div>

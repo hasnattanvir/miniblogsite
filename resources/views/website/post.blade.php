@@ -249,7 +249,7 @@
                      <h3 class="heading">Categories</h3>
                      <ul class="categories">
                          @foreach ($categories as $item)
-                         <li><a href="#">{{$item->name}} <span>(12)</span></a></li>
+                         <li><a href="#">{{$item->name}} <span></span></a></li>
                          @endforeach
                      </ul>
                  </div>

@@ -6,11 +6,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Starter Page</h1>
+            <h1 class="m-0">User Page</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{route('website.home')}}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{route('website')}}">Home</a></li>
               <li class="breadcrumb-item active">user List</li>
             </ol>
           </div><!-- /.col -->
@@ -25,7 +25,7 @@
             <div class="card ">
               <div class="card-header  ">
                 <div class="d-flex justify-content-between align-items-center">
-                  <h3 class="card-title">Catagory List</h3>
+                  <h3 class="card-title">User List</h3>
                   <a href="{{route('user.create')}}" class="btn btn-primary">Create user</a>
                 </div>
               </div>
